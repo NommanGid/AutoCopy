@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Form Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <h1>Smart Form Scanner</h1>
+        <p>Upload or capture forms and extract information automatically</p>
+    </div>
+
+    <div class="main-container">
+        <div class="panel">
+            <div class="upload-section" id="dropZone">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <h2>Upload Form Image</h2>
+                <p>Drag & drop an image or click to select</p>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                <div class="actions">
+                    <button class="btn" onclick="document.getElementById('imageInput').click()">
+                        <i class="fas fa-file-upload"></i> Choose File
+                    </button>
+                    <button class="btn btn-secondary" onclick="captureImage()">
+                        <i class="fas fa-camera"></i> Take Picture
+                    </button>
+                </div>
+            </div>
+            <div id="imagePreview" class="image-preview"></div>
+        </div>
+
+        <div class="panel">
+            <h2>Extracted Fields</h2>
+            <p>Select the fields you want to include in the table</p>
+            <div id="checkboxContainer" class="checkbox-container"></div>
+            <div class="actions">
+                <button class="btn" onclick="createTable()">
+                    <i class="fas fa-table"></i> Create Table
+                </button>
+            </div>
+            <div id="tableContainer" class="table-container"></div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading" style="display:none;">
+        <i class="fas fa-spinner loading-spinner"></i>
+    </div>
+    <div id="notificationContainer"></div>
+
+    <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
